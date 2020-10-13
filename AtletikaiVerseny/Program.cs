@@ -11,6 +11,7 @@ namespace AtletikaiVerseny
     class Program
     {
         static List<Atletika> tavol = new List<Atletika>();
+        static Dictionary<string, string> nevek = new Dictionary<string, string>();
         static void Beolvas()
         {
             StreamReader file = new StreamReader("tavol.csv");
@@ -34,35 +35,46 @@ namespace AtletikaiVerseny
         }
         static void Harmadikfeldat()
         {
+            foreach (var e in tavol)
+            {
+                
+            }
             Console.WriteLine("\n3. feladat: Egyesületek:");
         }
         static void Negyedikfeldat()
         {
-            double max = 0;
+            int max = 0;
             foreach (var m in tavol)
             {
-
+                if (m.Ugras > max)
+                {
+                    max = m.Ugras;
+                    Console.WriteLine("\n4. feladat: Legnagyobb ugrás: \n {0}cm", max);
+                }  
             }
-            Console.WriteLine("\n4. feladat: Legnagyobb ugrás:");
         }
         static void Otodikfeldat()
         {
             double atlag;
-            foreach (var a in tavol)
-            {
-                if (atlag >)
-                {
+            double szum = 0;
 
-                }
+            foreach (var t in tavol)
+            {
+                szum += t.Ugras;
+           }
+            atlag = szum / tavol.Count;
+            if (atlag < szum)
+            {
+                Console.WriteLine("\n5. feladat: Átlag alatt lévő ugrások száma: {0}", tavol.Count);
             }
-            Console.WriteLine("\n5. feladat: Átlag alatt lévő ugrások száma: {0}");
+            
         }
         static void Hatodikfeldat()
         {
             StreamWriter ir = new StreamWriter("versenyzok.txt");
             foreach (var v in tavol)
             {
-
+                
             }
             ir.Close();
             Console.WriteLine("\n6. feladat: Adatok fájlba írása:");
